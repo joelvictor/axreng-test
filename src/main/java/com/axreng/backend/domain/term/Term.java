@@ -1,11 +1,10 @@
 package com.axreng.backend.domain.term;
 
 import java.util.List;
-import java.util.UUID;
 
 public class Term {
 
-    private UUID id;
+    private String id;
 
     private String keyword;
 
@@ -19,11 +18,11 @@ public class Term {
         this.keyword = keyword;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 
