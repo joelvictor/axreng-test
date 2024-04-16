@@ -1,10 +1,7 @@
 package com.axreng.backend.domain.exception;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Locale;
-import java.util.Properties;
 import java.util.ResourceBundle;
 
 public abstract class BusinessException extends Exception {
@@ -28,10 +25,6 @@ public abstract class BusinessException extends Exception {
     private static String getErrorMessage(String errorCode, Object... args) {
         String messagePattern = ResourceBundle.getBundle("error_messages", Locale.getDefault())
                 .getString(errorCode);
-        if (messagePattern != null) {
-            return MessageFormat.format(messagePattern, args);
-        } else {
-            return "Unknown business error: " + errorCode;
-        }
+        return MessageFormat.format(messagePattern, args);
     }
 }
