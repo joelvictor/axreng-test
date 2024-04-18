@@ -1,6 +1,7 @@
 package com.axreng.backend.api.controller;
 
-import com.axreng.backend.api.controller.request.TermResponse;
+import com.axreng.backend.api.controller.request.TermRequest;
+import com.axreng.backend.api.controller.response.TermResponse;
 import com.axreng.backend.application.useCase.searchUrl.SearchUrlByTermUseCase;
 import com.axreng.backend.domain.exception.EmptyKeywordException;
 import com.axreng.backend.domain.exception.InvalidKeywordSizeException;
@@ -12,8 +13,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import spark.Request;
 import spark.Response;
-
-import java.util.UUID;
 
 import static org.mockito.Mockito.*;
 
@@ -31,7 +30,7 @@ class SearchUrlByTermControllerTest {
     @Test
     void testHandle() throws Exception {
         TermResponse termResponse = new TermResponse("123");
-        when(searchUrlByTermUseCase.search(anyString())).thenReturn(termResponse);
+        when(searchUrlByTermUseCase.search(new TermRequest())).thenReturn(termResponse);
         Request request = mock(Request.class);
         request.attribute("keyword", "keyword");
         Response response = mock(Response.class);
@@ -41,7 +40,7 @@ class SearchUrlByTermControllerTest {
 
     @Test
     public void testEmptyKeyword() throws Exception {
-        when(searchUrlByTermUseCase.search("")).thenThrow(new EmptyKeywordException());
+        when(searchUrlByTermUseCase.search(new TermRequest())).thenThrow(new EmptyKeywordException());
         Request request = mock(Request.class);
         Response response = mock(Response.class);
         when(searchUrlByTermController.handle(request, response)).thenThrow(new EmptyKeywordException());
@@ -51,7 +50,9 @@ class SearchUrlByTermControllerTest {
 
     @Test
     public void testKeywordSizeLess4() throws Exception {
-        when(searchUrlByTermUseCase.search("xyz")).thenThrow(new EmptyKeywordException());
+        TermRequest termRequest = new TermRequest();
+        termRequest.setKeyword("xyz");
+        when(searchUrlByTermUseCase.search(termRequest)).thenThrow(new EmptyKeywordException());
         Request request = mock(Request.class);
         Response response = mock(Response.class);
         when(searchUrlByTermController.handle(request, response)).thenThrow(new InvalidKeywordSizeException());

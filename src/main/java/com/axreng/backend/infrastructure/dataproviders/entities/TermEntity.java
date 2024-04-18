@@ -2,7 +2,7 @@ package com.axreng.backend.infrastructure.dataproviders.entities;
 
 import com.axreng.backend.domain.term.StatusTerm;
 
-import java.util.List;
+import java.util.Set;
 
 public class TermEntity {
 
@@ -12,7 +12,7 @@ public class TermEntity {
 
     private StatusTerm status;
 
-    private List<String> urls;
+    private Set<String> urls;
 
     public String getId() {
         return id;
@@ -38,11 +38,11 @@ public class TermEntity {
         this.status = status;
     }
 
-    public List<String> getUrls() {
+    public Set<String> getUrls() {
         return urls;
     }
 
-    public void setUrls(List<String> urls) {
+    public void setUrls(Set<String> urls) {
         this.urls = urls;
     }
 

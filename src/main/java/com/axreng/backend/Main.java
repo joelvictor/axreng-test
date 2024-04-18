@@ -11,7 +11,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        get("/crawl/:id", ListUrlByTermController.get);
+//        get("/crawl/:id", ListUrlByTermController.get);
         post("/crawl", new SearchUrlByTermController((new SearchUrlByTermUseCaseImpl())));
+    }
+
+    public static class MyCrawler {
     }
 }

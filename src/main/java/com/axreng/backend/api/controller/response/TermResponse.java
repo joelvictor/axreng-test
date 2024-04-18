@@ -1,23 +1,29 @@
-package com.axreng.backend.domain.term;
+package com.axreng.backend.api.controller.response;
 
-import com.axreng.backend.api.controller.request.TermRequest;
+import com.axreng.backend.domain.term.StatusTerm;
+import com.axreng.backend.domain.term.Term;
 
+import java.util.HashSet;
 import java.util.Set;
 
-public class Term {
+public class TermResponse {
 
     private String id;
 
-    private String keyword;
-
     private StatusTerm status;
 
-    private Set<String> urls;
+    private Set<String> urls = new HashSet<>();
 
-    public Term() {}
+    public TermResponse() {}
 
-    public Term(TermRequest termRequest) {
-        this.keyword = termRequest.getKeyword();
+    public TermResponse(String id) {
+        this.id = id;
+    }
+
+    public TermResponse(Term term) {
+        this.id = term.getId();
+        this.status = term.getStatus();
+        this.urls = term.getUrls();
     }
 
     public String getId() {
@@ -26,14 +32,6 @@ public class Term {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getKeyword() {
-        return keyword;
-    }
-
-    public void setKeyword(String keyword) {
-        this.keyword = keyword;
     }
 
     public StatusTerm getStatus() {

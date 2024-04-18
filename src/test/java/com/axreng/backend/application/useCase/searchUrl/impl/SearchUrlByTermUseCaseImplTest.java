@@ -1,6 +1,6 @@
 package com.axreng.backend.application.useCase.searchUrl.impl;
 
-import com.axreng.backend.api.controller.request.TermResponse;
+import com.axreng.backend.api.controller.response.TermResponse;
 import com.axreng.backend.application.validator.SearchTermValidation;
 import com.axreng.backend.domain.exception.BusinessException;
 import com.axreng.backend.domain.exception.EmptyKeywordException;

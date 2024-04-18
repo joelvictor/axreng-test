@@ -4,11 +4,10 @@ package com.axreng.backend.api.controller;
 import spark.*;
 
 
-public class ListUrlByTermController {
+public class ListUrlByTermController implements Route {
 
-
-
-    public static Route get = (Request request, Response response) -> {
+    @Override
+    public Object handle(Request request, Response response) throws Exception {
         return null;
-    };
+    }
 }
