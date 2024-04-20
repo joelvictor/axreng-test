@@ -9,7 +9,7 @@ public class ListTermValidation {
     public void validateId(String id) throws EmptyTermIdException, InvalidTermIdSizeException {
         if (StringUtils.isEmpty(id)) {
             throw new EmptyTermIdException();
-        } else if (id.length() == 8) {
+        } else if (id.length() != 8) {
             throw new InvalidTermIdSizeException();
         }
     }

@@ -10,7 +10,7 @@ public class SearchTermValidation {
     public void validate(Term term) throws EmptyKeywordException, InvalidKeywordSizeException {
         if (StringUtils.isEmpty(term.getKeyword())) {
             throw new EmptyKeywordException();
-        } else if (term.getKeyword().length() < 4 && term.getKeyword().length() > 32) {
+        } else if (term.getKeyword().length() < 4 || term.getKeyword().length() > 32) {
             throw new InvalidKeywordSizeException();
         }
     }

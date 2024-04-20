@@ -1,18 +1,17 @@
 package com.axreng.backend.api.controller.response;
 
-import com.axreng.backend.domain.term.StatusTerm;
 import com.axreng.backend.domain.term.Term;
 
-import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class TermResponse {
 
     private String id;
 
-    private StatusTerm status;
+    private String status;
 
-    private Set<String> urls = new HashSet<>();
+    private Set<String> urls;
 
     public TermResponse() {}
 
@@ -21,9 +20,11 @@ public class TermResponse {
     }
 
     public TermResponse(Term term) {
-        this.id = term.getId();
-        this.status = term.getStatus();
-        this.urls = term.getUrls();
+        if (Objects.nonNull(term)) {
+            this.id = term.getId();
+            this.status = Objects.nonNull(term.getStatus()) ? term.getStatus().getDescricao() : null;
+            this.urls = term.getUrls();
+        }
     }
 
     public String getId() {
@@ -34,11 +35,11 @@ public class TermResponse {
         this.id = id;
     }
 
-    public StatusTerm getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(StatusTerm status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

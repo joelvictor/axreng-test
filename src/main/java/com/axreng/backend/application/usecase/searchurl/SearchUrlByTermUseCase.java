@@ -1,4 +1,4 @@
-package com.axreng.backend.application.useCase.searchUrl;
+package com.axreng.backend.application.usecase.searchurl;
 
 import com.axreng.backend.api.controller.request.TermRequest;
 import com.axreng.backend.api.controller.response.TermResponse;

@@ -5,13 +5,13 @@ public enum StatusTerm {
     ACTIVE("active"),
     DONE("done");
 
-    private final String status;
+    private final String descricao;
 
-    StatusTerm(String status) {
-        this.status = status;
+    StatusTerm(String descricao) {
+        this.descricao = descricao;
     }
 
-    public String getStatus() {
-        return status;
+    public String getDescricao() {
+        return descricao;
     }
 }

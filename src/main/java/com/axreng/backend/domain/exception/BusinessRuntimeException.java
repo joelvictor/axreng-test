@@ -4,16 +4,16 @@ import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public abstract class BusinessException extends Exception {
+public abstract class BusinessRuntimeException extends RuntimeException {
 
     private final String errorCode;
 
-    protected BusinessException(String errorCode) {
+    protected BusinessRuntimeException(String errorCode) {
         super(getErrorMessage(errorCode));
         this.errorCode = errorCode;
     }
 
-    protected BusinessException(String errorCode, Object... args) {
+    protected BusinessRuntimeException(String errorCode, Object... args) {
         super(getErrorMessage(errorCode, args));
         this.errorCode = errorCode;
     }
